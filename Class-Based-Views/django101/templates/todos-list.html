@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    <ul>
+        {% for todos in object_list %}
+            <li>{{ todos.title }} - {{ todos.category.name }}</li>
+        {% endfor %}
+
+    </ul>
+
+    <table>
+        <tr>
+            <td><h4>TodoTitle</h4></td>
+            <td><h4>CategoryName</h4></td>
+            <td><h4>Details</h4></td>
+        </tr>
+        {% for todos in object_list %}
+            <tr>
+                <td>{{ todos.title }}</td>
+                <td>{{ todos.category.name }}</td>
+                <td><a href="{% url 'todos details' todos.pk %}">Link</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

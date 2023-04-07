@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li><a href="{% url 'function-based index' %}">Function Based Home</a></li>
+    <li><a href="{% url 'class-based index' %}">Class Based Home</a></li>
+    <li><a href="{% url 'class-based index (templated)' %}">Class Based Home Templated</a></li>
+    <li><a href="{% url 'class-based index (templated) inherited' %}">Class Based Home Templated Inherited</a></li>
+    <li><a href="{% url 'todos list' %}">Todos</a></li>
+    <li><a href="{% url 'create todo' %}">Create Todo</a></li>
+
+{#    <li><a href="{% url 'todos details' object.pk %}">Todo Details</a></li>#}
+</ul>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>
