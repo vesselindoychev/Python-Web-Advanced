@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Dashboard</h1>
+    <table>
+        <tr>
+            <td>First Name</td>
+        </tr>
+        {% for profile in object_list %}
+            <tr>
+                <td>{{ profile.first_name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
