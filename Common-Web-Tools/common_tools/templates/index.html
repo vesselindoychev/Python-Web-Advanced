@@ -5,9 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<a href="{% url 'profiles list' %}">Profiles</a>
 <h1>Value {{ value }}</h1>
 <h1>This is new</h1>
 <h2>This is value2 {{ value2 }}</h2>
 <h2>The site was opened {{ count }} times</h2>
+<ul>
+    {% for p in profiles_page %}
+        <li>{{ p }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

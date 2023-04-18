@@ -11,3 +11,6 @@ class Profile(models.Model):
     # is_deleted = models.BooleanField(
     #     default=False,
     # )
+
+    def __str__(self):
+        return f"{self.pk}: {self.name} with {self.email}"
