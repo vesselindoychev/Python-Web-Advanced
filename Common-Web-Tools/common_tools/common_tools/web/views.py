@@ -1,5 +1,7 @@
 import random
+import time
 
+from django.views import generic as views
 from django.core.cache import cache
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
@@ -26,3 +28,12 @@ def show_book_details(request, pk):
     last_viewed = request.session.get('last_viewed_books') or []
     last_viewed.append(pk)
     request.session['last_viewed_books'] = last_viewed
+
+
+class MeasureTimeMixin(views.TemplateView):
+    def dispatch(self, request, *args, **kwargs):
+        start_time = time.time()
+        result = super().dispatch(*args, **kwargs)
+        end_time = time.time()
+        print(end_time - start_time)
+        return result
