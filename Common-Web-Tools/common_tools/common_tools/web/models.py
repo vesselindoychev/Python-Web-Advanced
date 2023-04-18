@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+
+class Profile(models.Model):
+    email = models.EmailField()
+
+    name = models.CharField(
+        max_length=20,
+    )
+
+    # is_deleted = models.BooleanField(
+    #     default=False,
+    # )

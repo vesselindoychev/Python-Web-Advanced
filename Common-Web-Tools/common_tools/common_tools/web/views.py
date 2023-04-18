@@ -6,9 +6,16 @@ from django.core.cache import cache
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 
-
 # @cache_page(30)
+from common_tools.web.models import Profile
+
+
 def show_home_index(request):
+    Profile.objects.create(
+        name='Ivan Petkov',
+        email='ivan123@abv.bg',
+    )
+
     if not cache.get('value2'):
         cache.set('value2', random.randint(1, 1024), 30)
 
