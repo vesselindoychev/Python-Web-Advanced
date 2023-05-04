@@ -7,8 +7,19 @@ from django.core.cache import cache
 from django.shortcuts import render
 from django.views.decorators.cache import cache_page
 
-# @cache_page(30)
 from common_tools.web.models import Profile
+
+
+# @cache_page(30)
+def show_demo(request):
+    if not cache.get('value2'):
+        cache.set('value2', random.randint(1, 1024), 30)
+
+    context = {
+        'value2': cache.get('value2'),
+        'value': 'Hi'
+    }
+    return render(request, 'demo.html', context)
 
 
 def show_home_index(request):
@@ -20,7 +31,7 @@ def show_home_index(request):
     profiles = Profile.objects.all()
 
     if not cache.get('value2'):
-        cache.set('value2', random.randint(1, 1024), 30)
+        cache.set('value2', random.randint(1, 1024), 12)
 
     count = request.session.get('count') or 0
     request.session['count'] = count + 1
@@ -29,7 +40,7 @@ def show_home_index(request):
     current_page = request.GET.get('page', 1)
 
     context = {
-        'value2': random.randint(1, 1024),
+        'value2': cache.get('value2'),
         'value': random.randint(1, 1024),
         'count': request.session.get('count'),
         'profiles': profiles,
